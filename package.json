@@ -1,0 +1,29 @@
+{
+  "name": "qna",
+  "version": "1.0.0",
+  "description": "API for QnA",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.12.0",
+    "node": "^15.10.0",
+    "nodemon": "^2.0.7"
+  },
+  "devDependencies": {
+    "artillery": "^1.6.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Team-Sojourner/QnA.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Team-Sojourner/QnA/issues"
+  },
+  "homepage": "https://github.com/Team-Sojourner/QnA#readme"
+}

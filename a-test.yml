@@ -1,0 +1,68 @@
+config:
+  target: 'http://localhost:3002'
+  http:
+    timeout: 10 # Responses have to be sent within 10 seconds or the request will be aborted
+
+  phases:
+    - duration: 60 # seconds
+      arrivalRate: 100 # virtual users
+
+scenarios:
+  - name: 'Load test get questions request'
+    flow:
+      - get:
+          url: '/qa/21111'
+          expect:
+            - statusCode: 200
+  - name: 'Load test get answers request'
+    flow:
+      - get:
+          url: '/qa/21111/answers'
+          expect:
+            - statusCode: 200
+
+
+
+
+
+# config:
+#   target: "http://localhost:3001/qa/1"
+#   phases:
+#     - duration: 60
+#       arrivalRate: 5
+#       name: Warm up
+#     - duration: 120
+#       arrivalRate: 5
+#       rampTo: 50
+#       name: Ramp up load
+#     - duration: 600
+#       arrivalRate: 50
+#       name: Sustained load
+#   payload:
+#     # Load search keywords from an external CSV file and make them available
+#     # to virtual user scenarios as variable "keywords":
+#     path: "keywords.csv"
+#     fields:
+#       - "keywords"
+# scenarios:
+#   # We define one scenario:
+#   - name: "Search and post"
+#     flow:
+#       # - post:
+#       #     url: "/search"
+#       #     body: "kw={{ keywords }}"
+#       #     # The endpoint responds with JSON, which we parse and extract a field from
+#       #     # to use in the next request:
+#       #     capture:
+#       #       json: "$.results[0].id"
+#       #       as: "id"
+#       # # Get the details of the product:
+#       - get:
+#           url: "/product/{{ id }}/details"
+#       # Pause for 3 seconds:
+#       - think: 3
+#       # Add product to cart:
+#       # - post:
+#       #     url: "/cart"
+#       #     json:
+#       #       productId: "{{ id }}"
